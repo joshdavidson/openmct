@@ -6,10 +6,8 @@ WORKDIR /opt
 RUN apk add --no-cache git && \
     git clone https://github.com/nasa/openmct.git && \
     cd openmct && \
-    npm install && \
-    apk del git
-
+    npm install
 
 WORKDIR /opt/openmct
 EXPOSE 8080
-CMD npm start
+ENTRYPOINT ["npm", "start", "--", "--host", "0.0.0.0"]
